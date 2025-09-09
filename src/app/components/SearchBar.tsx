@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Advocate } from '../models/advocate';
 
 type SearchBarProps = {
-  advocates: Advocate[];
   setFilteredAdvocates: React.Dispatch<React.SetStateAction<Advocate[]>>;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({advocates, setFilteredAdvocates}) => {
+const SearchBar: React.FC<SearchBarProps> = ({ setFilteredAdvocates }) => {
   const [searchInput, setSearchInput] = React.useState<string>("");
+  const [advocates, setAdvocates] = useState<Advocate[]>([]);
+  
+
+  useEffect(() => {
+    fetch("/api/advocates").then((response) => {
+      response.json().then((jsonResponse) => {
+        setAdvocates(jsonResponse.data);
+        setFilteredAdvocates(jsonResponse.data);
+      });
+    });
+  }, [setFilteredAdvocates]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
