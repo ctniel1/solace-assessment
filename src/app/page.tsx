@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Advocate } from "./models/advocate";
+import SearchBar from "./components/SearchBar";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
@@ -17,43 +18,12 @@ export default function Home() {
     });
   }, []);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = e.target.value.toLowerCase();
-
-    document.getElementById("search-term")!.innerHTML = e.target.value;
-
-    const filteredAdvocates = advocates.filter((advocate) => {
-      return (
-      advocate.firstName.toLowerCase().includes(searchTerm) ||
-      advocate.lastName.toLowerCase().includes(searchTerm) ||
-      advocate.city.toLowerCase().includes(searchTerm) ||
-      advocate.degree.toLowerCase().includes(searchTerm) ||
-      advocate.specialties.some((s) => s.toLowerCase().includes(searchTerm)) ||
-      advocate.yearsOfExperience.toString().toLowerCase().includes(searchTerm)
-      );
-    });
-
-    setFilteredAdvocates(filteredAdvocates);
-  };
-
-  const onClick = () => {
-    console.log(advocates);
-    setFilteredAdvocates(advocates);
-  };
-
   return (
     <main style={{ margin: "24px" }}>
       <h1>Solace Advocates</h1>
       <br />
       <br />
-      <div>
-        <p>Search</p>
-        <p>
-          Searching for: <span id="search-term"></span>
-        </p>
-        <input style={{ border: "1px solid black" }} onChange={onChange} />
-        <button onClick={onClick}>Reset Search</button>
-      </div>
+      <SearchBar advocates={advocates} setFilteredAdvocates={setFilteredAdvocates} />
       <br />
       <br />
       <table>
