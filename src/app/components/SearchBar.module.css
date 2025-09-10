@@ -1,0 +1,31 @@
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-right: 16px;
+  width: 100%;
+}
+
+.searchInput {
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.clearButton {
+  background-color: #265b4e;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  background-color: #1e4d3b;
+}
+.clearButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

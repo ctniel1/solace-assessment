@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Advocate } from '../models/advocate';
+import styles from './SearchBar.module.css';
 
 type SearchBarProps = {
   setFilteredAdvocates: React.Dispatch<React.SetStateAction<Advocate[]>>;
@@ -43,10 +44,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ setFilteredAdvocates }) => {
   };
 
   return (
-    <div>
-        <input style={{ border: "1px solid black" }} value={searchInput} onChange={onChange} />
-        <button onClick={onClick}>Clear</button>
-      </div>
+    <div className={styles.searchBarContainer}>
+      <input className={styles.searchInput} value={searchInput} onChange={onChange} placeholder='Search...' />
+      <button className={styles.clearButton} onClick={onClick}>Clear</button>
+    </div>
   );
 };
 
