@@ -21,10 +21,6 @@
 }
 
 .tableRow {
-  &:hover {
-    background-color: #f1f1f1;
-  }
-
   & > td {
     padding: 12px;
     border: 1px solid #ddd;
