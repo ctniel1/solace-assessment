@@ -1,5 +1,6 @@
 import React from 'react';
 import { Advocate } from '../models/advocate';
+import styles from './AdvocateTable.module.css';
 
 type AdvocateTableProps = {
   filteredAdvocates: Advocate[];
@@ -7,9 +8,9 @@ type AdvocateTableProps = {
 
 const AdvocateTable: React.FC<AdvocateTableProps> = ({filteredAdvocates}) => {
   return (
-    <table>
-        <thead>
-          <tr>
+    <table className={styles.advocateTable}>
+        <thead className={styles.tableHeader}>
+          <tr className={styles.headerRow}>
             <th>First Name</th>
             <th>Last Name</th>
             <th>City</th>
@@ -19,10 +20,10 @@ const AdvocateTable: React.FC<AdvocateTableProps> = ({filteredAdvocates}) => {
             <th>Phone Number</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.tableBody}>
           {filteredAdvocates.map((advocate) => {
             return (
-              <tr key={advocate.phoneNumber}>
+              <tr className={styles.tableRow} key={advocate.phoneNumber}>
                 <td>{advocate.firstName}</td>
                 <td>{advocate.lastName}</td>
                 <td>{advocate.city}</td>

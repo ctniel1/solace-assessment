@@ -1,0 +1,32 @@
+.advocateTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: #265b4e;
+  color: white;
+}
+
+.headerRow {
+  font-weight: bold;
+  & > th {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+}
+
+.tableBody {
+  text-align: left;
+}
+
+.tableRow {
+  & > td {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+}
+
+.tableRow:nth-child(even) {
+  background-color: #f2f2f2;
+}
